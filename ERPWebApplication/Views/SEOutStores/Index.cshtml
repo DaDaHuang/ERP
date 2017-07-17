@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.SEOutStore>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>销售出库管理</h2>
+
+<p>
+    @Html.ActionLink("添加销售出库", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>序号</th>
+        <th>
+            出库单日期
+        </th>
+        <th>
+            操作员
+        </th>
+        <th>
+            单据编号
+        </th>
+        <th>
+            客户编号
+        </th>
+        <th>
+            出货仓库编号
+        </th>
+        <th>
+            存货编号
+        </th>
+        <th>
+            出库单价
+        </th>
+        <th>
+            销售单价
+        </th>
+        <th>
+            出库数量
+        </th>
+        <th>
+            销售金额
+        </th>
+        <th>
+            收款人
+        </th>
+        <th>
+            审核状态
+        </th>
+        <th>操作</th>
+    </tr>
+@{ int xh = 1;}
+@foreach (var item in Model) {
+    <tr>
+        <td>@(xh++)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOutDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatorCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOrderCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvenCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFlag)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new {id = item.SEOutCode}) |
+            @Html.ActionLink("详情", "Details", new {id = item.SEOutCode}) |
+            @Html.ActionLink("删除", "Delete", new {id = item.SEOutCode})
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,113 @@
+﻿@model ERPWebApplication.Dao.PUOrder
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>删除采购订单</h2>
+
+<h3>你确定要删除这个吗？</h3>
+<div>
+    <h4>采购订单</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            单据日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUOrderDate)
+        </dd>
+
+        <dt>
+            操作员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorCode)
+        </dd>
+
+        <dt>
+            订货仓库编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoreCode)
+        </dd>
+
+        <dt>
+            存货编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvenCode)
+        </dd>
+
+        <dt>
+            采购单价
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            采购数量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            采购金额
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUMoney)
+        </dd>
+
+        <dt>
+            收货日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecInvenDate)
+        </dd>
+
+        <dt>
+            采购员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeCode)
+        </dd>
+
+        <dt>
+            审核状态
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFlag)
+        </dd>
+
+        <dt>
+            供应商
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSSupplier.SupplierName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回", "Index")
+        </div>
+    }
+</div>

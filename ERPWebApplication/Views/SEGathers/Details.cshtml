@@ -1,0 +1,99 @@
+﻿@model ERPWebApplication.Dao.SEGather
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>详情</h2>
+
+<div>
+    <h4>销售收款详情</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            收款单据日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEGatherDate)
+        </dd>
+
+        <dt>
+            操作员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorCode)
+        </dd>
+
+        <dt>
+            销售出库单号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEOutCode)
+        </dd>
+
+        <dt>
+            销售出库日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEOutDate)
+        </dd>
+
+        <dt>
+            客户编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerCode)
+        </dd>
+
+        <dt>
+            收款金额
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMoney)
+        </dd>
+
+        <dt>
+            账户编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountCode)
+        </dd>
+
+        <dt>
+            收款人
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeCode)
+        </dd>
+
+        <dt>
+            备注
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            审核状态
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFlag)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id = Model.SEGatherCode }) |
+    @Html.ActionLink("返回", "Index")
+</p>

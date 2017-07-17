@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.PUInStore>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>采购入库管理</h2>
+
+<p>
+    @Html.ActionLink("添加采购入库", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>序号</th>        
+        <th>
+            入库日期
+        </th>
+        <th>
+           操作员
+        </th>
+        <th>
+            仓库编号
+        </th>
+        <th>
+            存货编号
+        </th>
+        <th>
+            入库单价
+        </th>
+        <th>
+            入库数量
+        </th>
+        <th>
+            入库金额
+        </th>
+        <th>
+            单据编号
+        </th>
+        <th>
+            库管员
+        </th>
+        <th>
+            审核状态
+        </th>
+        <th>
+            供应商
+        </th>
+        <th></th>
+    </tr>
+@{int xh = 1;}
+@foreach (var item in Model) {
+    <tr>
+        <td>@(xh++)</td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.PUInDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatorCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvenCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUOrderCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BSSupplier.SupplierName)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new {id = item.PUInCode}) |
+            @Html.ActionLink("详情", "Details", new {id = item.PUInCode}) |
+            @Html.ActionLink("删除", "Delete", new {id = item.PUInCode})
+        </td>
+    </tr>
+}
+
+</table>

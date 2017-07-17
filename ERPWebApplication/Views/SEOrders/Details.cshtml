@@ -1,0 +1,107 @@
+﻿@model ERPWebApplication.Dao.SEOrder
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>详情</h2>
+
+<div>
+    <h4>销售订单</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            单据日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEOrderDate)
+        </dd>
+
+        <dt>
+            操作员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorCode)
+        </dd>
+
+        <dt>
+            客户编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerCode)
+        </dd>
+
+        <dt>
+            订单仓库编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoreCode)
+        </dd>
+
+        <dt>
+            存货编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvenCode)
+        </dd>
+
+        <dt>
+            销售单价
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellPrice)
+        </dd>
+
+        <dt>
+            销售数量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            销售金额
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMoney)
+        </dd>
+
+        <dt>
+            发货日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SenInvenDate)
+        </dd>
+
+        <dt>
+            业务员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeCode)
+        </dd>
+
+        <dt>
+            审核状态
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFlag)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id = Model.SEOrderCode }) |
+    @Html.ActionLink("返回", "Index")
+</p>

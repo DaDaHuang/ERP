@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3f13165fa7444b8b7874a88cdb605e2" Name="Diagram1">
+        <EntityTypeShape EntityType="SmallERPModel.BSSupplier" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="SmallERPModel.PUInStore" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="SmallERPModel.PUOrder" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="SmallERPModel.PUPay" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="SmallERPModel.SEGather" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SmallERPModel.SEOrder" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SmallERPModel.SEOutStore" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="SmallERPModel.FK_PUInStore_BSSupplier" />
+        <AssociationConnector Association="SmallERPModel.FK_PUOrder_BSSupplier" />
+        <AssociationConnector Association="SmallERPModel.FK_PUPay_BSSupplier" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

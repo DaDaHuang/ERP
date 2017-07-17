@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.PUOrder>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>采购订单管理</h2>
+
+<p>
+    @Html.ActionLink("添加采购订单", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>序号</th>
+        <th>单据编号</th>
+        <th>单据日期</th>
+        <th>操作员</th>
+        <th>供应商</th>
+        <th>订货仓库编号</th>
+        <th>存货编号</th>
+        <th>采购单价</th>
+        <th>采购数量</th>
+        <th>采购金额</th>
+        <th>收货日期</th>
+        <th>采购员</th>
+        <th>审核状态</th>
+        <th></th>
+    </tr>
+    @{ int a = 1;}
+@foreach (var item in Model) {
+    <tr>
+        <td>@(a++)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUOrderCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUOrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatorCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvenCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PUMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecInvenDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BSSupplier.SupplierName)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new {id = item.PUOrderCode}) |
+            @Html.ActionLink("详情", "Details", new {id = item.PUOrderCode}) |
+            @Html.ActionLink("删除", "Delete", new {id = item.PUOrderCode})
+        </td>
+    </tr>
+}
+
+</table>

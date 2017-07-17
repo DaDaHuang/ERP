@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.BSSupplier>
+@{
+    ViewBag.Title = "PUOrderAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加采购订单</h2>
+
+<a href="/PU/Index">返回</a>
+
+<form action="/PU/PUOrderSave" method="post">
+    单据编号:<input type="text" name="PUOrderCode"/><br />
+    单据日期:<input type="text" name="PUOrderDate" /><br />
+    操作员:<input type="text" name="OperatorCode" /><br />
+    供应商:
+    <select name="SupplierCode">
+        @foreach (var item in Model)
+        {
+            <option value="@item.SupplierCode">@item.SupplierName</option>
+        }
+    </select><br/>
+    订货仓库编号:<input type="text" name="StoreCode" /><br />
+    存货编号:<input type="text" name="InvenCode" /><br />
+    采购单价:<input type="text" name="UnitPrice" /><br />
+    采购数量:<input type="text" name="Quantity" /><br />
+    采购金额:<input type="text" name="PUMoney" /><br />
+    收货日期:<input type="text" name="RecInvenDate" /><br />
+    采购员:<input type="text" name="EmployeeCode" /><br />
+    审核状态:<input type="text" name="IsFlag" /><br />
+    <input type="submit" value="提交" />
+    <a href="/PU/Index">返回</a>
+</form>
