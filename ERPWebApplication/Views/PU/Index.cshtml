@@ -1,0 +1,58 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ERPWebApplication.Dao.PUOrder>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a href="/PU/PUOrderAdd">添加订单</a>
+</p>
+<h2>采购订单</h2>
+
+<table>    
+    <tr>
+        <th>序号</th>
+        <th>单据编号</th>
+        <th>单据日期</th>
+        <th>操作员</th>
+        <th>供应商</th>
+        <th>订货仓库编号</th>
+        <th>存货编号</th>
+        <th>采购单价</th>
+        <th>采购数量</th>
+        <th>采购金额</th>
+        <th>收货日期</th>
+        <th>采购员</th>
+        <th>审核状态</th>
+        <th></th>
+    </tr>
+    
+    @{ int xh = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(xh++)</td>
+            <td>@item.PUOrderCode</td>
+            <td>@item.PUOrderDate</td>
+            <td>@item.OperatorCode</td>
+            <td>@item.BSSupplier.SupplierName</td>
+            <td>@item.StoreCode</td>
+            <td>@item.InvenCode</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.Quantity</td>
+            <td>@item.PUMoney</td>
+            <td>@item.RecInvenDate</td>
+            <td>@item.EmployeeCode</td>
+            <td>@item.IsFlag</td>
+            <td>
+                <a href="/PU/PUOrderSave?id=@item.PUOrderCode">编辑</a>
+                <a href="/PU/PUOrderDel?id=@item.PUOrderCode">删除</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("QCcx", new { page = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })
+
+
