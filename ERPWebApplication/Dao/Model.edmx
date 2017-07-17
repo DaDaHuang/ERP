@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmallERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BSSupplier">
+          <Key>
+            <PropertyRef Name="SupplierCode" />
+          </Key>
+          <Property Name="SupplierCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelephoneCode" Type="varchar" MaxLength="13" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="PostCode" Type="varchar" MaxLength="6" />
+          <Property Name="Linkman" Type="varchar" MaxLength="10" />
+          <Property Name="Url" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PUInStore">
+          <Key>
+            <PropertyRef Name="PUInCode" />
+          </Key>
+          <Property Name="PUInCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PUInDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SupplierCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="InvenCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="PUMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="PUOrderCode" Type="varchar" MaxLength="20" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="PUOrder">
+          <Key>
+            <PropertyRef Name="PUOrderCode" />
+          </Key>
+          <Property Name="PUOrderCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PUOrderDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SupplierCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="InvenCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="PUMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="RecInvenDate" Type="datetime" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="PUPay">
+          <Key>
+            <PropertyRef Name="PUPayCode" />
+          </Key>
+          <Property Name="PUPayCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PUPayDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PUInCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PUInDate" Type="datetime" />
+          <Property Name="SupplierCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PUMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="AccountCode" Type="varchar" MaxLength="19" Nullable="false" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" />
+          <Property Name="Remark" Type="text" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="SEGather">
+          <Key>
+            <PropertyRef Name="SEGatherCode" />
+          </Key>
+          <Property Name="SEGatherCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SEGatherDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SEOutCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SEOutDate" Type="datetime" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SEMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="AccountCode" Type="varchar" MaxLength="19" Nullable="false" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" />
+          <Property Name="Remark" Type="text" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="SEOrder">
+          <Key>
+            <PropertyRef Name="SEOrderCode" />
+          </Key>
+          <Property Name="SEOrderCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SEOrderDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreCode" Type="varchar" MaxLength="10" />
+          <Property Name="InvenCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SellPrice" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SEMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="SenInvenDate" Type="datetime" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="SEOutStore">
+          <Key>
+            <PropertyRef Name="SEOutCode" />
+          </Key>
+          <Property Name="SEOutCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SEOutDate" Type="datetime" />
+          <Property Name="OperatorCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SEOrderCode" Type="varchar" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="InvenCode" Type="varchar" MaxLength="10" />
+          <Property Name="UnitPrice" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="SellPrice" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SEMoney" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsFlag" Type="bit" />
+        </EntityType>
+        <Association Name="FK_PUInStore_BSSupplier">
+          <End Role="BSSupplier" Type="Self.BSSupplier" Multiplicity="1" />
+          <End Role="PUInStore" Type="Self.PUInStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUInStore">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUOrder_BSSupplier">
+          <End Role="BSSupplier" Type="Self.BSSupplier" Multiplicity="1" />
+          <End Role="PUOrder" Type="Self.PUOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUOrder">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUPay_BSSupplier">
+          <End Role="BSSupplier" Type="Self.BSSupplier" Multiplicity="1" />
+          <End Role="PUPay" Type="Self.PUPay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUPay">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmallERPModelStoreContainer">
+          <EntitySet Name="BSSupplier" EntityType="Self.BSSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUInStore" EntityType="Self.PUInStore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUOrder" EntityType="Self.PUOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUPay" EntityType="Self.PUPay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEGather" EntityType="Self.SEGather" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEOrder" EntityType="Self.SEOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEOutStore" EntityType="Self.SEOutStore" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PUInStore_BSSupplier" Association="Self.FK_PUInStore_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUInStore" EntitySet="PUInStore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUOrder_BSSupplier" Association="Self.FK_PUOrder_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUOrder" EntitySet="PUOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUPay_BSSupplier" Association="Self.FK_PUPay_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUPay" EntitySet="PUPay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmallERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SmallERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BSSupplier" EntityType="SmallERPModel.BSSupplier" />
+          <EntitySet Name="PUInStore" EntityType="SmallERPModel.PUInStore" />
+          <EntitySet Name="PUOrder" EntityType="SmallERPModel.PUOrder" />
+          <EntitySet Name="PUPay" EntityType="SmallERPModel.PUPay" />
+          <EntitySet Name="SEGather" EntityType="SmallERPModel.SEGather" />
+          <EntitySet Name="SEOrder" EntityType="SmallERPModel.SEOrder" />
+          <EntitySet Name="SEOutStore" EntityType="SmallERPModel.SEOutStore" />
+          <AssociationSet Name="FK_PUInStore_BSSupplier" Association="SmallERPModel.FK_PUInStore_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUInStore" EntitySet="PUInStore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUOrder_BSSupplier" Association="SmallERPModel.FK_PUOrder_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUOrder" EntitySet="PUOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUPay_BSSupplier" Association="SmallERPModel.FK_PUPay_BSSupplier">
+            <End Role="BSSupplier" EntitySet="BSSupplier" />
+            <End Role="PUPay" EntitySet="PUPay" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BSSupplier">
+          <Key>
+            <PropertyRef Name="SupplierCode" />
+          </Key>
+          <Property Name="SupplierCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelephoneCode" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Linkman" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PUInStore" Relationship="SmallERPModel.FK_PUInStore_BSSupplier" FromRole="BSSupplier" ToRole="PUInStore" />
+          <NavigationProperty Name="PUOrder" Relationship="SmallERPModel.FK_PUOrder_BSSupplier" FromRole="BSSupplier" ToRole="PUOrder" />
+          <NavigationProperty Name="PUPay" Relationship="SmallERPModel.FK_PUPay_BSSupplier" FromRole="BSSupplier" ToRole="PUPay" />
+        </EntityType>
+        <EntityType Name="PUInStore">
+          <Key>
+            <PropertyRef Name="PUInCode" />
+          </Key>
+          <Property Name="PUInCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PUInDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StoreCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvenCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="PUMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="PUOrderCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+          <NavigationProperty Name="BSSupplier" Relationship="SmallERPModel.FK_PUInStore_BSSupplier" FromRole="PUInStore" ToRole="BSSupplier" />
+        </EntityType>
+        <EntityType Name="PUOrder">
+          <Key>
+            <PropertyRef Name="PUOrderCode" />
+          </Key>
+          <Property Name="PUOrderCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PUOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StoreCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvenCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="PUMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="RecInvenDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+          <NavigationProperty Name="BSSupplier" Relationship="SmallERPModel.FK_PUOrder_BSSupplier" FromRole="PUOrder" ToRole="BSSupplier" />
+        </EntityType>
+        <EntityType Name="PUPay">
+          <Key>
+            <PropertyRef Name="PUPayCode" />
+          </Key>
+          <Property Name="PUPayCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PUPayDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PUInCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PUInDate" Type="DateTime" Precision="3" />
+          <Property Name="SupplierCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PUMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="AccountCode" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+          <NavigationProperty Name="BSSupplier" Relationship="SmallERPModel.FK_PUPay_BSSupplier" FromRole="PUPay" ToRole="BSSupplier" />
+        </EntityType>
+        <EntityType Name="SEGather">
+          <Key>
+            <PropertyRef Name="SEGatherCode" />
+          </Key>
+          <Property Name="SEGatherCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEGatherDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEOutCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEOutDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="AccountCode" Type="String" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SEOrder">
+          <Key>
+            <PropertyRef Name="SEOrderCode" />
+          </Key>
+          <Property Name="SEOrderCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StoreCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvenCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SellPrice" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SEMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="SenInvenDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SEOutStore">
+          <Key>
+            <PropertyRef Name="SEOutCode" />
+          </Key>
+          <Property Name="SEOutCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEOutDate" Type="DateTime" Precision="3" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEOrderCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StoreCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InvenCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="SellPrice" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SEMoney" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlag" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_PUInStore_BSSupplier">
+          <End Type="SmallERPModel.BSSupplier" Role="BSSupplier" Multiplicity="1" />
+          <End Type="SmallERPModel.PUInStore" Role="PUInStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUInStore">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUOrder_BSSupplier">
+          <End Type="SmallERPModel.BSSupplier" Role="BSSupplier" Multiplicity="1" />
+          <End Type="SmallERPModel.PUOrder" Role="PUOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUOrder">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUPay_BSSupplier">
+          <End Type="SmallERPModel.BSSupplier" Role="BSSupplier" Multiplicity="1" />
+          <End Type="SmallERPModel.PUPay" Role="PUPay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BSSupplier">
+              <PropertyRef Name="SupplierCode" />
+            </Principal>
+            <Dependent Role="PUPay">
+              <PropertyRef Name="SupplierCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmallERPModelStoreContainer" CdmEntityContainer="SmallERPEntities">
+          <EntitySetMapping Name="BSSupplier">
+            <EntityTypeMapping TypeName="SmallERPModel.BSSupplier">
+              <MappingFragment StoreEntitySet="BSSupplier">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Linkman" ColumnName="Linkman" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUInStore">
+            <EntityTypeMapping TypeName="SmallERPModel.PUInStore">
+              <MappingFragment StoreEntitySet="PUInStore">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="PUOrderCode" ColumnName="PUOrderCode" />
+                <ScalarProperty Name="PUMoney" ColumnName="PUMoney" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="InvenCode" ColumnName="InvenCode" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="PUInDate" ColumnName="PUInDate" />
+                <ScalarProperty Name="PUInCode" ColumnName="PUInCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUOrder">
+            <EntityTypeMapping TypeName="SmallERPModel.PUOrder">
+              <MappingFragment StoreEntitySet="PUOrder">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="RecInvenDate" ColumnName="RecInvenDate" />
+                <ScalarProperty Name="PUMoney" ColumnName="PUMoney" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="InvenCode" ColumnName="InvenCode" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="PUOrderDate" ColumnName="PUOrderDate" />
+                <ScalarProperty Name="PUOrderCode" ColumnName="PUOrderCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUPay">
+            <EntityTypeMapping TypeName="SmallERPModel.PUPay">
+              <MappingFragment StoreEntitySet="PUPay">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="PUMoney" ColumnName="PUMoney" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="PUInDate" ColumnName="PUInDate" />
+                <ScalarProperty Name="PUInCode" ColumnName="PUInCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="PUPayDate" ColumnName="PUPayDate" />
+                <ScalarProperty Name="PUPayCode" ColumnName="PUPayCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEGather">
+            <EntityTypeMapping TypeName="SmallERPModel.SEGather">
+              <MappingFragment StoreEntitySet="SEGather">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="SEMoney" ColumnName="SEMoney" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="SEOutDate" ColumnName="SEOutDate" />
+                <ScalarProperty Name="SEOutCode" ColumnName="SEOutCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="SEGatherDate" ColumnName="SEGatherDate" />
+                <ScalarProperty Name="SEGatherCode" ColumnName="SEGatherCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEOrder">
+            <EntityTypeMapping TypeName="SmallERPModel.SEOrder">
+              <MappingFragment StoreEntitySet="SEOrder">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="SenInvenDate" ColumnName="SenInvenDate" />
+                <ScalarProperty Name="SEMoney" ColumnName="SEMoney" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="InvenCode" ColumnName="InvenCode" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="SEOrderDate" ColumnName="SEOrderDate" />
+                <ScalarProperty Name="SEOrderCode" ColumnName="SEOrderCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEOutStore">
+            <EntityTypeMapping TypeName="SmallERPModel.SEOutStore">
+              <MappingFragment StoreEntitySet="SEOutStore">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="SEMoney" ColumnName="SEMoney" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="InvenCode" ColumnName="InvenCode" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="SEOrderCode" ColumnName="SEOrderCode" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="SEOutDate" ColumnName="SEOutDate" />
+                <ScalarProperty Name="SEOutCode" ColumnName="SEOutCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

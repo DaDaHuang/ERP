@@ -1,0 +1,105 @@
+﻿@model ERPWebApplication.Dao.PUPay
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>删除</h2>
+
+<h3>你确定要删除这个吗？</h3>
+<div>
+    <h4>采购付款信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            付款日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUPayDate)
+        </dd>
+
+        <dt>
+            操作员
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorCode)
+        </dd>
+
+        <dt>
+            入库编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUInCode)
+        </dd>
+
+        <dt>
+           入库日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUInDate)
+        </dd>
+
+        <dt>
+            付款金额
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PUMoney)
+        </dd>
+
+        <dt>
+            账户类型
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountCode)
+        </dd>
+
+        <dt>
+            付款人
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeCode)
+        </dd>
+
+        <dt>
+            备注
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            审核状态
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFlag)
+        </dd>
+
+        <dt>
+            供应商
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSSupplier.SupplierName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.SEOrder>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("添加销售订单", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>序号</th>
+        <th>单据编号</th>
+        <th>单据日期</th>
+        <th>操作员</th>
+        <th>客户编号</th>
+        <th>订单仓库编号</th>
+        <th>存货编号</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>金额</th>
+        <th>发货日期</th>
+        <th>业务员</th>
+        <th>审核状态</th>
+        <th>操作</th>
+    </tr>
+    @{ int xh = 1;}
+@foreach (var item in Model) {
+    <tr>
+        <td>@(xh++)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOrderCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatorCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvenCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SenInvenDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFlag)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new {id = item.SEOrderCode}) |
+            @Html.ActionLink("详情", "Details", new { id=item.SEOrderCode }) |
+            @Html.ActionLink("删除", "Delete", new {id = item.SEOrderCode})
+        </td>
+    </tr>
+}
+
+</table>

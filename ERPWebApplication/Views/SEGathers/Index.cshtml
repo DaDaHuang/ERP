@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ERPWebApplication.Dao.SEGather>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>销售收款管理</h2>
+
+<p>
+    @Html.ActionLink("添加销售收款", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>序号</th>
+        <th>
+            收款单据日期
+        </th>
+        <th>            
+            操作员
+        </th>
+        <th>
+            销售出库单号
+        </th>
+        <th>
+            销售出库日期
+        </th>
+        <th>
+            客户编号
+        </th>
+        <th>
+            收款金额
+        </th>
+        <th>
+            帐户编号
+        </th>
+        <th>
+            收款人
+        </th>
+        <th>
+            备注
+        </th>
+        <th>
+            审核状态
+        </th>
+        <th>操作</th>
+    </tr>
+    @{ int xh = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(xh++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEGatherDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatorCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEOutCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEOutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFlag)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new {id = item.SEGatherCode}) |
+                @Html.ActionLink("详情", "Details", new {id = item.SEGatherCode}) |
+                @Html.ActionLink("删除", "Delete", new {id = item.SEGatherCode})
+            </td>
+        </tr>
+    }
+
+</table>
